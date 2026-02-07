@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rose Day for Zaid</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #8B0000 100%);
+            color: white;
+            overflow-x: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.5s ease;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .intro, .hero, .rose-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .intro h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .intro .subtext {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #FFB6C1;
+            margin-bottom: 40px;
+        }
+
+        button {
+            background: linear-gradient(45deg, #8B0000, #DC143C);
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #FFB6C1;
+            margin-bottom: 40px;
+        }
+
+        .rose-section h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .rose-section p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .rose-text {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #DC143C;
+            text-shadow: 0 0 15px rgba(220, 20, 60, 0.8);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .continue-btn {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="intro active">
+            <h1 id="intro-text">Zaid…</h1>
+            <div class="subtext" id="subtext" style="display: none;">This Rose Day is only for you</div>
+            <button id="continue-btn">Continue</button>
+        </div>
+        <div class="hero">
+            <h1>Happy Rose Day, Zaid</h1>
+            <p>Not every man gets a rose — only the one who truly deserves it.</p>
+            <button class="continue-btn" id="hero-continue">Continue</button>
+        </div>
+        <div class="rose-section">
+            <h2>I don’t need a real rose for you.</h2>
+            <p>Because you are the kind of man<br>
+            who doesn’t need gifts to feel special.<br>
+            Still…<br>
+            today, I choose to give you</p>
+            <div class="rose-text">A Rose Without a Flower</div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const introText = document.getElementById('intro-text');
+            const subtext = document.getElementById('subtext');
+            const continueBtn = document.getElementById('continue-btn');
+            const hero = document.querySelector('.hero');
+            const heroContinue = document.getElementById('hero-continue');
+            const roseSection = document.querySelector('.rose-section');
+            const intro = document.querySelector('.intro');
+
+            // Intro text change after 1.5 seconds
+            setTimeout(() => {
+                introText.style.display = 'none';
+                subtext.style.display = 'block';
+            }, 1500);
+
+            // Continue to hero
+            continueBtn.addEventListener('click', () => {
+                intro.classList.remove('active');
+                setTimeout(() => {
+                    hero.classList.add('active');
+                }, 500);
+            });
+
+            // Continue to rose section
+            heroContinue.addEventListener('click', () => {
+                hero.classList.remove('active');
+                setTimeout(() => {
+                    roseSection.classList.add('active');
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
